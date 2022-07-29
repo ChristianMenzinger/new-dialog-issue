@@ -15,22 +15,26 @@ It's very likely to run into this when
 Be sure your DevHub is authenticated. Paste below commands to your terminal in the working directory of this cloned repo:
 
 
-sfdx force:org:create -f config/project-scratch-def.json --setalias new-dialog-test --durationdays 7 --setdefaultusername &&
+`sfdx force:org:create -f config/project-scratch-def.json --setalias new-dialog-test --durationdays 7 --setdefaultusername &&
 sfdx force:source:push &&
 sfdx force:user:permset:assign --permsetname Dev &&
 sfdx force:apex:execute -f scripts/apex/create_data.apex &&
-sfdx force:org:open -p "lightning/o/Master__c/list?filterName=All"
+sfdx force:org:open -p "lightning/o/Master__c/list?filterName=All"`
 
-Open "Master 1", use the related list to create a new "Detail" record.
+Open "Master 1", find the related list, click on the arrow button next to "Details (1), click "New".
+
+Open "Details 1" from the same to validate that the page renders correctly.
 
 
 # Explanation
-The Detail Lightning Record Page uses visibility filters depending on the Master's record type to display. The first section is only visible for RecType1, the second only for RecType2:
+Given a Master-Detail between two custom objects "Master" and "Detail" whereas Master has two record types "RecType1" and "RecType2".
 
-![](assets/issue.png)
+The Detail Lightning Record Page uses visibility filters depending on those record types: the first section is only visible for RecType1, the second only for RecType2:
+
+![](assets/filters.png)
 
 This logic works and can be validated when opening "Details 1" record on the "Master 1" record. As a Detail record can't exist without the Master, the relationship in the filter is correct.
 
-But this breaks in the new dialog in the related list: the Master record is null and therefore all fields are hidden as none of the filters apply!
+But this breaks in the "New" dialog in the related list: the Master record is *null* and therefore all fields are hidden as none of the filters apply!
 
 
