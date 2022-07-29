@@ -15,11 +15,16 @@ It's very likely to run into this when
 Be sure your DevHub is authenticated. Paste below commands to your terminal in the working directory of this cloned repo:
 
 
-`sfdx force:org:create -f config/project-scratch-def.json --setalias new-dialog-test --durationdays 7 --setdefaultusername &&
-sfdx force:source:push &&
-sfdx force:user:permset:assign --permsetname Dev &&
-sfdx force:apex:execute -f scripts/apex/create_data.apex &&
-sfdx force:org:open -p "lightning/o/Master__c/list?filterName=All"`
+`sfdx force:org:create -f config/project-scratch-def.json --setalias new-dialog-test --durationdays 7 --setdefaultusername`
+
+`sfdx force:source:push`
+
+
+`sfdx force:user:permset:assign --permsetname Dev`
+
+`sfdx force:apex:execute -f scripts/apex/create_data.apex`
+
+`sfdx force:org:open -p "lightning/o/Master__c/list?filterName=All"`
 
 Open "Master 1", find the related list, click on the arrow button next to "Details (1)", click "New".
 ![](assets/new.png)
