@@ -28,7 +28,7 @@ Be sure your DevHub is authenticated. Paste below commands to your terminal in t
 
 Open "Master 1", find the related list, click on the arrow button next to "Details (1)", click "New".
 ![](assets/new.png)
-Also open "Details 1" to validate that the page renders correctly.
+Also open "Detail 1" to validate that the page renders correctly.
 
 
 # Explanation
@@ -49,3 +49,9 @@ Visibility filters should respect the context from where the dialog is opened as
 This logic **is** applying to the lookup field which can be seen when removing the first filter: the lookup is pre-filled!
 
 ![](assets/new_without_filter.png)
+
+
+# Workaround
+Be sure your filter logic works with a **null** value for the master. For example having a default like "not RecType1 and not RecType2". But of course we loose the ability to show fields in the "New" dialog depending on the Master record type.
+
+![](assets/workaround.png)
